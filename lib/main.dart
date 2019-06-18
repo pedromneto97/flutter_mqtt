@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'modules/authentication/bloc.dart';
-import 'modules/home/Home.dart';
-import 'modules/splash/SplashScreen.dart';
+import 'modules/home/home.dart';
+import 'modules/splash/splash_screen.dart';
 
 void main() => runApp(App());
 
