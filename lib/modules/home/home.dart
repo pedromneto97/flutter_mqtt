@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mqtt/modules/Scaffold/Scaffold.dart';
+import 'package:flutter_mqtt/modules/scaffold/scaffold.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class Home extends StatefulWidget {
