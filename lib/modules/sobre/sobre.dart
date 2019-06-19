@@ -22,7 +22,7 @@ class Sobre extends StatelessWidget {
                     Divider(height: 20),
                     ListTile(
                       title: Text(
-                        "Projeto desenvolvido para a robótica no curso de Engenharia de Computação pela Universidade Estadual de Ponta Grossa.",
+                        "Projeto desenvolvido para a disciplina de robótica no curso de Engenharia de Computação pela Universidade Estadual de Ponta Grossa.",
                         style: TextStyle(color: Colors.black),
                       ),
                       contentPadding: EdgeInsets.symmetric(horizontal: 20),
