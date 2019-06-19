@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
+import 'package:mqtt_client/mqtt_client.dart';
 
 @immutable
 abstract class MqttState extends Equatable {
@@ -22,6 +23,10 @@ class ConnectingMqttState extends MqttState {
 }
 
 class ConnectedMqttState extends MqttState {
+  final MqttClient client;
+
+  ConnectedMqttState(this.client);
+
   @override
   String toString() => 'ConnectedMqttState';
 }
