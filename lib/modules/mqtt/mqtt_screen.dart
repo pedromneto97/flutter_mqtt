@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_mqtt/modules/mqqt_operations/mqtt_connected.dart';
+import 'package:flutter_mqtt/modules/mqqt_operations/mqtt_connected_screen.dart';
 import 'package:flutter_mqtt/modules/scaffold/scaffold.dart';
 
 import 'bloc.dart';
