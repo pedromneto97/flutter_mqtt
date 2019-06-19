@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mqtt/modules/home/home.dart';
 import 'package:flutter_mqtt/modules/sobre/sobre.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class MyScaffold extends StatefulWidget {
   final Widget child;
@@ -24,7 +23,7 @@ class _MyScaffoldState extends State<MyScaffold> {
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
-            DrawerHeader(child: SvgPicture.asset('images/logo.svg')),
+            DrawerHeader(child: Image.asset('images/logo_blue.png')),
             ListTile(
               trailing: Icon(Icons.home),
               title: Text("Home"),
