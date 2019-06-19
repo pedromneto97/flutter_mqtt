@@ -1,0 +1,27 @@
+import 'package:equatable/equatable.dart';
+import 'package:meta/meta.dart';
+
+@immutable
+abstract class MqttState extends Equatable {
+  MqttState([List props = const []]) : super(props);
+}
+
+class InitialMqttState extends MqttState {
+  @override
+  String toString() => 'Initial';
+}
+
+class ConfigureMqttState extends MqttState {
+  @override
+  String toString() => 'ConfigureMqttState';
+}
+
+class ConnectingMqttState extends MqttState {
+  @override
+  String toString() => 'ConnectingMqttState';
+}
+
+class ConnectedMqttState extends MqttState {
+  @override
+  String toString() => 'ConnectedMqttState';
+}
