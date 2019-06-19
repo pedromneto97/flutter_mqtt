@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_mqtt/modules/scaffold/scaffold.dart';
 
 import 'bloc.dart';
+import 'mqtt_connect_form.dart';
 
 class MQTT extends StatefulWidget {
   @override
@@ -11,7 +12,6 @@ class MQTT extends StatefulWidget {
 
 class _MQTTState extends State<MQTT> {
   MqttBloc _bloc;
-  final _form_key = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,17 @@ class _MQTTState extends State<MQTT> {
                     return CircularProgressIndicator();
                   }
                   if (state is ConfigureMqttState) {
-                    return buildForm();
+                    return MqttConnectForm(_bloc);
+                  }
+                  if (state is ConnectingMqttState) {
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text("Tentando conectar ao servidor de MQTT!"),
+                        Divider(height: 20),
+                        CircularProgressIndicator()
+                      ],
+                    );
                   }
                 },
               ),
@@ -51,52 +61,5 @@ class _MQTTState extends State<MQTT> {
   void dispose() {
     _bloc.dispose();
     super.dispose();
-  }
-
-  Widget buildForm() {
-    return Form(
-      key: _form_key,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          TextFormField(
-            validator: (value) {
-              if (value.isEmpty) {
-                return 'Host do MQTT Broker';
-              }
-              return null;
-            },
-            decoration: InputDecoration(labelText: "Host"),
-          ),
-          TextFormField(
-            validator: (value) {
-              if (value.isEmpty) {
-                value = "1883";
-              }
-              return null;
-            },
-            decoration: InputDecoration(labelText: "Port"),
-            keyboardType: TextInputType.number,
-            initialValue: "1883",
-          ),
-          TextFormField(
-            decoration: InputDecoration(labelText: "Username"),
-          ),
-          TextFormField(
-            decoration: InputDecoration(labelText: "Password"),
-            obscureText: true,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16.0),
-            child: RaisedButton(
-              onPressed: () {
-                _form_key.currentState.validate();
-              },
-              child: Text('Submit'),
-            ),
-          ),
-        ],
-      ),
-    );
   }
 }
