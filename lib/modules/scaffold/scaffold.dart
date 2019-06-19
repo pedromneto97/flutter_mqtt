@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mqtt/modules/home/home.dart';
+import 'package:flutter_mqtt/modules/mqtt/mqtt_screen.dart';
 import 'package:flutter_mqtt/modules/sobre/sobre.dart';
 
 class MyScaffold extends StatefulWidget {
@@ -37,13 +38,25 @@ class _MyScaffoldState extends State<MyScaffold> {
             ),
             ListTile(
               trailing: Icon(Icons.arrow_forward),
-              title: Text("Sobre"),
+              title: Text("MQTT"),
               onTap: () => Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MQTT(),
+                ),
+                    (_) => false,
+              ),
+            ),
+            ListTile(
+              trailing: Icon(Icons.arrow_forward),
+              title: Text("Sobre"),
+              onTap: () =>
+                  Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(
                       builder: (context) => Sobre(),
                     ),
-                    (_) => false,
+                        (_) => false,
                   ),
             ),
           ],
