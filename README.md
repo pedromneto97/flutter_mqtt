@@ -1,16 +1,13 @@
 # flutter_mqtt
 
-Aplicativo mobile para controlar um robô utilizando protocolo MQTT
+Aplicativo mobile desenvolvido para a disciplina de robótica no curso de Engenharia de Computação pela Universidade Estadual de Ponta Grossa.
 
-## Getting Started
+## Objetivo
 
-This project is a starting point for a Flutter application.
+O objetivo é um sistema para controlar um robô, trocando informação com a utilização do protocolo MQTT.  
 
-A few resources to get you started if this is your first Flutter project:
+## Utilização
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+- Conectar no broker do MQTT.  
+- Publicar no tópico desejado.
+    - O publish foi definido para ter um número indefinido de chaves e valores a serem convertidos para JSON.
