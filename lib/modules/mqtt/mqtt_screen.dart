@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_mqtt/modules/mqqt_operations/mqtt_connected.dart';
 import 'package:flutter_mqtt/modules/scaffold/scaffold.dart';
 
 import 'bloc.dart';
@@ -16,33 +17,34 @@ class _MQTTState extends State<MQTT> {
   @override
   Widget build(BuildContext context) {
     return MyScaffold(
-      Center(
-        child: SingleChildScrollView(
-          child: Container(
-            margin: EdgeInsets.fromLTRB(10.0, 20.0, 10.0, 10.0),
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: BlocBuilder(
-                bloc: _bloc,
-                builder: (context, MqttState state) {
-                  if (state is InitialMqttState) {
-                    return CircularProgressIndicator();
-                  }
-                  if (state is ConfigureMqttState) {
-                    return MqttConnectForm(_bloc);
-                  }
-                  if (state is ConnectingMqttState) {
-                    return Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text("Tentando conectar ao servidor de MQTT!"),
-                        Divider(height: 20),
-                        CircularProgressIndicator()
-                      ],
-                    );
-                  }
-                },
-              ),
+      SingleChildScrollView(
+        child: Container(
+          margin: EdgeInsets.fromLTRB(10.0, 20.0, 10.0, 10.0),
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: BlocBuilder(
+              bloc: _bloc,
+              builder: (context, MqttState state) {
+                if (state is InitialMqttState) {
+                  return CircularProgressIndicator();
+                }
+                if (state is ConfigureMqttState) {
+                  return MqttConnectForm(_bloc);
+                }
+                if (state is ConnectingMqttState) {
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text("Tentando conectar ao servidor de MQTT!"),
+                      Divider(height: 20),
+                      CircularProgressIndicator()
+                    ],
+                  );
+                }
+                if (state is ConnectedMqttState) {
+                  return MqttConnectedScreen();
+                }
+              },
             ),
           ),
         ),
